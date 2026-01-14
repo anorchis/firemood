@@ -31,11 +31,6 @@ body, html {
   transform: translate(-50%, -50%);
 }
 
-#fire-audio {
-  opacity: 0;
-  pointer-events: none;
-}
-
 
 /* 4. 오버레이 레이어 (중간 가림막) */
 #overlay {
