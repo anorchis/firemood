@@ -1,3 +1,4 @@
+/* 1. 기본 배경 및 폰트 설정 */
 body, html {
   margin: 0;
   padding: 0;
@@ -9,39 +10,33 @@ body, html {
   color: white;
 }
 
+/* 2. 영상 레이어 (바닥) */
 #video-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
   overflow: hidden;
-  pointer-events: none; /* Prevent interaction with video */
 }
 
-/* 
-   To simulate background-size: cover for an iframe, 
-   we can make it much larger than the screen and center it.
-   Or use a CSS aspect-ratio trick. 
-   A simple robust way for 16:9 videos:
-*/
-#video-background iframe {
+#video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 3. 소리 전용 유튜브 플레이어 (숨김) */
+#player {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 177.77vh; /* 100 * 16 / 9 */
-  height: 100vh;
-  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
-@media (min-aspect-ratio: 16/9) {
-  #video-background iframe {
-    width: 100vw;
-    height: 56.25vw; /* 100 * 9 / 16 */
-  }
-}
-
+/* 4. 오버레이 레이어 (중간 가림막) */
 #overlay {
   position: absolute;
   top: 0;
@@ -52,10 +47,12 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.3); /* Slight dim for readability */
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.4);
   transition: background 0.5s ease;
 }
 
+/* 5. 텍스트 및 버튼 스타일 */
 #content {
   text-align: center;
   z-index: 10;
@@ -96,6 +93,7 @@ button:hover {
   color: black;
 }
 
+/* 6. 우측 하단 컨트롤 버튼 */
 #controls {
   position: absolute;
   bottom: 30px;
@@ -113,19 +111,18 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white; /* 아이콘 색상 추가 */
 }
 
 .icon-btn:hover {
   background: rgba(255,255,255,0.2);
-  color: white;
 }
 
-/* Hide content when playing if desired, or keep it. Rainy mood keeps title usually but subtle. */
+/* 7. 재생 중 상태 스타일 */
 body.playing #overlay {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1); /* 배경 투명도 감소 */
 }
 
 body.playing #content {
-  /* optional: fade out title text after starting? 
-     Rainy Mood keeps it. Let's keep it but maybe smaller or just there. */
+  /* 재생 시 텍스트에 변화를 주고 싶다면 여기에 작성 (현재는 그대로 유지) */
 }
