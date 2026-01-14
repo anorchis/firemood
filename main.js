@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const video = document.getElementById('fire-video');
+  const video = document.getElementById('fire-audio');
   const playBtn = document.getElementById('play-button');
   const overlay = document.getElementById('overlay');
   const controls = document.getElementById('controls');

@@ -1,19 +1,21 @@
 # Fire Mood Blueprint
 
 ## Overview
-A minimalist "Fire Mood" web application that provides a relaxing fireplace experience with high-quality local video and audio.
+A minimalist "Fire Mood" web application that provides a relaxing fireplace experience with high-quality local video/image and audio.
 
 ## Features
-- **Local Media**: Uses `fire.mp4` for both visual and audio content (YouTube API completely removed).
-- **Immersive Transition**: "Start Relaxing" button unmutes the video and fades out the UI for a focused experience.
+- **Optimized Media**: Uses `fire.webp` (animated WebP) for visuals to reduce load, and `fire.mp4` (hidden) for audio.
+- **Immersive Transition**: "Start Relaxing" button unmutes the hidden audio and fades out the UI for a focused experience.
 - **Controls**: Minimalist volume toggle and responsive design.
 
 ## Implementation Details
-- **HTML**: Clean structure using `<video>` with `<source type="video/mp4">`.
-- **CSS**: `object-fit: cover` for full-screen video background; smooth opacity transitions for the overlay.
-- **JS**: Vanilla JavaScript to handle play/pause, volume, and UI state transitions.
+- **HTML**:
+    - `<img src="fire.webp">` for the background visual.
+    - `<video src="fire.mp4">` (hidden, opacity 0) for audio playback.
+- **CSS**: `object-fit: cover` for full-screen visual; hidden video element.
+- **JS**: Vanilla JavaScript to handle audio play/pause (targeting the hidden video element), volume, and UI state transitions.
 
 ## Project Status
-- YouTube API dependencies removed.
-- Media source consolidated to `fire.mp4`.
+- Switched to `fire.webp` for visuals as per user request.
+- `fire.mp4` retained for audio track.
 - Ready for deployment.
