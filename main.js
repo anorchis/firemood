@@ -69,3 +69,18 @@ function updateVolumeIcon(muted) {
     btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
   }
 }
+const playBtn = document.getElementById('play-button');
+const content = document.getElementById('content');
+const overlay = document.getElementById('overlay');
+const video = document.getElementById('bg-video');
+
+playBtn.addEventListener('click', () => {
+  // 글씨 서서히 사라짐
+  content.classList.add('fade-out');
+  
+  // 배경을 완전히 투명하게 변경
+  overlay.classList.add('bg-transparent');
+  
+  // 필요한 경우 여기서 비디오 소리를 켭니다 (사용자 상호작용 후 가능)
+  video.muted = false;
+});

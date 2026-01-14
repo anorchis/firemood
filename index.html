@@ -11,14 +11,17 @@
 </head>
 <body>
   <div id="video-background">
-    <div id="player"></div>
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="fire.mp4" type="video/mp4">
+    </video>
   </div>
-
+  
   <div id="overlay">
     <div id="content">
       <h1>Fire Mood</h1>
       <p>Relax with the sounds of a crackling fire.</p>
       <button id="play-button">Start Relaxing</button>
+    </div>
     </div>
     
     <div id="controls" style="display: none;">
