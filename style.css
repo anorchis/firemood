@@ -27,14 +27,6 @@ body, html {
   object-fit: cover;
 }
 
-/* 3. 소리 전용 유튜브 플레이어 (숨김) */
-#player {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
 
 /* 4. 오버레이 레이어 (중간 가림막) */
 #overlay {
