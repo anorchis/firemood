@@ -73,7 +73,8 @@ window.onYouTubeIframeAPIReady = function() {
       'autoplay': 0,
       'controls': 0,
       'loop': 1,
-      'playlist': 'L_LUpnjgPso' // 반복 재생용
+      'playlist': 'L_LUpnjgPso', // 반복 재생용
+      'origin': window.location.origin
     },
     events: {
       'onReady': (event) => {
