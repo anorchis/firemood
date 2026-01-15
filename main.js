@@ -78,6 +78,7 @@ window.onYouTubeIframeAPIReady = function() {
     },
     events: {
       'onReady': (event) => {
+        event.target.setVolume(100);
         // 준비 완료 시점에 실행할 동작
       }
     }
