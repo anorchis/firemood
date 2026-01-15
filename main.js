@@ -36,7 +36,7 @@ function playSeamless() {
     // 4. 필터 설정 (날카로운 '타닥' 소리를 부드럽게 깎아줌)
     const filter = audioContext.createBiquadFilter();
     filter.type = 'lowpass'; 
-    filter.frequency.value = 2500; // 2500 이하의 부드러운 소리만 통과
+    filter.frequency.value = 2000; // 2500 이하의 부드러운 소리만 통과
     filter.Q.value = 1;
 
     // 5. 오디오 연결망(Chain) 구축
