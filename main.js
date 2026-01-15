@@ -1,53 +1,3 @@
-let audioContext;
-let audioBuffer;
-let sourceNode;
-
-// 1. 소리 파일 미리 로드 (페이지 로드 시 실행)
-async function setupAudio() {
-    try {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const response = await fetch('fire.m4a'); // 파일명이 정확해야 합니다!
-        const arrayBuffer = await response.arrayBuffer();
-        audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-        console.log("오디오 로드 완료: 이제 완벽한 루프가 가능합니다.");
-    } catch (e) {
-        console.error("오디오 로드 실패:", e);
-    }
-}
-// 페이지 로드 시 미리 준비
-window.addEventListener('load', setupAudio);
-function playSeamless() {
-    // 1. 안전장치: 소리 파일이 메모리에 올라왔는지 먼저 확인합니다.
-    if (!audioBuffer) {
-        alert("소리 파일이 아직 로드되지 않았습니다. 잠시만 기다려주세요!");
-        return;
-    }
-
-    // 2. 중복 방지: 이미 재생 중인 소리가 있다면 멈춥니다.
-    if (sourceNode) {
-        sourceNode.stop();
-    }
-
-    // 3. 소리 소스 생성 및 설정
-    sourceNode = audioContext.createBufferSource();
-    sourceNode.buffer = audioBuffer;
-    sourceNode.loop = true; // 8초마다 끊기지 않게 하드웨어 루프 설정
-
-    // 4. 필터 설정 (날카로운 '타닥' 소리를 부드럽게 깎아줌)
-    const filter = audioContext.createBiquadFilter();
-    filter.type = 'lowpass'; 
-    filter.frequency.value = 2000; // 2500 이하의 부드러운 소리만 통과
-    filter.Q.value = 1;
-
-    // 5. 오디오 연결망(Chain) 구축
-    // [소스] -> [필터] -> [스피커(Destination)] 순서로 연결합니다.
-    sourceNode.connect(filter);
-    filter.connect(audioContext.destination);
-
-    // 6. 재생 시작
-    sourceNode.start(0);
-    console.log("✅ 필터가 적용된 부드러운 장작 소리 무한 재생 시작");
-}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,18 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 playBtn.addEventListener('click', () => {
-    // 브라우저 보안 정책상 클릭 시점에 Resume 필요
-    if (audioContext.state === 'suspended') {
-        audioContext.resume();
-    }
-    
-    playSeamless();
-
-    /*if (player) {
+    if (player) {
     player.playVideo(); // YouTube 재생
     player.unMute();    // 소리 켜기
   }
-    video.play();*/
     updateVolumeIcon(false);
     
     document.getElementById('controls').style.display = 'block';
