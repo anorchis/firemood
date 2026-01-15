@@ -18,6 +18,7 @@ playBtn.addEventListener('click', () => {
     player.playVideo(); // YouTube 재생
     player.unMute();    // 소리 켜기
   }
+    video.play()
     updateVolumeIcon(false);
     
     document.getElementById('controls').style.display = 'block';
