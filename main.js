@@ -53,3 +53,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+let player;
+
+// 1. API가 준비되면 실행되는 함수
+window.onYouTubeIframeAPIReady = function() {
+  player = new YT.Player('player', {
+    height: '0', // 소리만 필요하므로 크기를 0으로 설정 가능
+    width: '0',
+    videoId: 'L_LUpnjgPso', // 가져올 유튜브 영상 ID
+    playerVars: {
+      'autoplay': 0,
+      'controls': 0,
+      'loop': 1,
+      'playlist': 'L_LUpnjgPso' // 반복 재생용
+    },
+    events: {
+      'onReady': (event) => {
+        // 준비 완료 시점에 실행할 동작
+      }
+    }
+  });
+};
+
+// 2. 소리를 재생하고 음소거를 해제하는 함수
+function playSound() {
+  if (player) {
+    player.playVideo();
+    player.unMute(); // 소리 켜기
+  }
+}
+
+// 3. 소리를 끄는 함수 (음소거)
+function muteSound() {
+  if (player) {
+    player.mute();
+  }
+}
