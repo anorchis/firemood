@@ -66,8 +66,8 @@ let player;
 // 1. API가 준비되면 실행되는 함수
 window.onYouTubeIframeAPIReady = function() {
   player = new YT.Player('player', {
-    height: '0', // 소리만 필요하므로 크기를 0으로 설정 가능
-    width: '0',
+    height: '1', // 소리만 필요하므로 크기를 0으로 설정 가능
+    width: '1',
     videoId: 'L_LUpnjgPso', // 가져올 유튜브 영상 ID
     playerVars: {
       'autoplay': 0,
