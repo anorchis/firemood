@@ -1,14 +1,4 @@
-let audioContext;
-let audioBuffer;
-let sourceNode;
 
-// 1. 오디오 파일 로드
-async function loadAudio() {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const response = await fetch('fire.m4a'); // 업로드하신 파일명
-    const arrayBuffer = await response.arrayBuffer();
-    audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.getElementById('fire-video');
@@ -24,16 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   playBtn.addEventListener('click', async () => {
-    if (!audioContext) await loadAudio(); // 클릭 시점에 오디오 컨텍스트 생성
-    playSeamless();
-    
-    document.body.classList.add('playing');
-    
-    /*if (player) {
+    if (player) {
     player.playVideo(); // YouTube 재생
     player.unMute();    // 소리 켜기
   }
-    video.play();*/
+    video.play();
     updateVolumeIcon(false);
 
     // Update UI
@@ -109,17 +94,4 @@ function muteSound() {
   if (player) {
     player.mute();
   }
-}
-// 2. 끊김 없는 재생 함수
-function playSeamless() {
-    if (!audioBuffer) return;
-    
-    // 소스가 이미 재생 중이면 중지
-    if (sourceNode) sourceNode.stop();
-
-    sourceNode = audioContext.createBufferSource();
-    sourceNode.buffer = audioBuffer;
-    sourceNode.loop = true; // 핵심: 하드웨어 레벨에서 끊김 없이 반복
-    sourceNode.connect(audioContext.destination);
-    sourceNode.start(0);
 }
