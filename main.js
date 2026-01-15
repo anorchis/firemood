@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   playBtn.addEventListener('click', () => {
     // Unmute and play
-    video.muted = false;
+    if (player) {
+    player.playVideo(); // YouTube 재생
+    player.unMute();    // 소리 켜기
+  }
     video.play();
     updateVolumeIcon(false);
 
@@ -33,13 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   volumeBtn.addEventListener('click', () => {
-    if (video.muted) {
-      video.muted = false;
+    if (player) {
+    if (player.isMuted()) {
+      player.unMute(); // 음소거 해제
       updateVolumeIcon(false);
     } else {
-      video.muted = true;
+      player.mute();   // 음소거
       updateVolumeIcon(true);
     }
+  }
   });
 
   function updateVolumeIcon(muted) {
