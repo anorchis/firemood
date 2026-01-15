@@ -1,3 +1,40 @@
+let audioContext;
+let audioBuffer;
+let sourceNode;
+
+// 1. 소리 파일 미리 로드 (페이지 로드 시 실행)
+async function setupAudio() {
+    try {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const response = await fetch('fire.m4a'); // 파일명이 정확해야 합니다!
+        const arrayBuffer = await response.arrayBuffer();
+        audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+        console.log("오디오 로드 완료: 이제 완벽한 루프가 가능합니다.");
+    } catch (e) {
+        console.error("오디오 로드 실패:", e);
+    }
+}
+// 페이지 로드 시 미리 준비
+window.addEventListener('load', setupAudio);
+
+// 2. 재생 함수
+function playSeamless() {
+    if (!audioBuffer) {
+        alert("소리 파일이 아직 로드되지 않았습니다. 잠시만 기다려주세요!");
+        return;
+    }
+
+    // 이미 재생 중이면 중지 후 새로 시작 (중첩 방지)
+    if (sourceNode) {
+        sourceNode.stop();
+    }
+
+    sourceNode = audioContext.createBufferSource();
+    sourceNode.buffer = audioBuffer;
+    sourceNode.loop = true; // 브라우저가 아닌 오디오 엔진이 직접 루프를 돌립니다.
+    sourceNode.connect(audioContext.destination);
+    sourceNode.start(0);
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,14 +50,24 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Autoplay prevented:", error);
   });
 
-  playBtn.addEventListener('click', async () => {
-    if (player) {
+playBtn.addEventListener('click', () => {
+    // 브라우저 보안 정책상 클릭 시점에 Resume 필요
+    if (audioContext.state === 'suspended') {
+        audioContext.resume();
+    }
+    
+    playSeamless();
+
+    /*if (player) {
     player.playVideo(); // YouTube 재생
     player.unMute();    // 소리 켜기
   }
-    video.play();
+    video.play();*/
     updateVolumeIcon(false);
-
+    
+    document.getElementById('controls').style.display = 'block';
+    playBtn.style.display = 'none';
+  
     // Update UI
     document.body.classList.add('playing');
     
