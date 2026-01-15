@@ -66,7 +66,6 @@ playBtn.addEventListener('click', () => {
     updateVolumeIcon(false);
     
     document.getElementById('controls').style.display = 'block';
-    playBtn.style.display = 'none';
   
     // Update UI
     document.body.classList.add('playing');
