@@ -32,3 +32,4 @@ This project creates a "Fire Mood" web application that displays a looping firep
 1.  **Switch to Local Video**: Replaced YouTube iframe with HTML5 `<video>` element. (Completed)
 2.  **Add Source Tag**: Updated `<video>` tag to use `<source>` for better compatibility. (Completed)
 3.  **Update Logic**: Refactored `main.js` to control the local video element instead of the YouTube player. (Completed)
+4.  **Add Google Analytics**: Inserted Google Tag Manager (gtag.js) into all HTML pages.
