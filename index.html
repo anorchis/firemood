@@ -22,13 +22,34 @@
 
 <!-- Re-deployment trigger -->
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Fire Mood - Relaxing Fireplace Sounds &amp; Video</title>
+  <meta name="description" content="Relax and unwind with Fire Mood. Experience the calming ambiance of a high-quality crackling fireplace video with soothing sounds. Perfect for sleep, focus, and meditation." />
+  <meta name="keywords" content="fire mood, fireplace, relaxing sounds, fire sounds, ambient noise, sleep aid, focus, meditation, white noise, campfire" />
+  <meta name="author" content="Fire Mood" />
+  <link rel="canonical" href="https://firemood.web.app/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://firemood.web.app/" />
+  <meta property="og:title" content="Fire Mood - Relaxing Fireplace Sounds &amp; Video" />
+  <meta property="og:description" content="Relax and unwind with Fire Mood. Experience the calming ambiance of a high-quality crackling fireplace video with soothing sounds." />
+  <meta property="og:image" content="https://firemood.web.app/favicon2.svg" />
+  <meta property="og:site_name" content="Fire Mood" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://firemood.web.app/" />
+  <meta property="twitter:title" content="Fire Mood - Relaxing Fireplace Sounds &amp; Video" />
+  <meta property="twitter:description" content="Relax and unwind with Fire Mood. Experience the calming ambiance of a high-quality crackling fireplace video with soothing sounds." />
+  <meta property="twitter:image" content="https://firemood.web.app/favicon2.svg" />
+
   <meta name="google-adsense-account" content="ca-pub-9781032320296144">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9781032320296144"
      crossorigin="anonymous"></script>
   <link rel="icon" type="image/svg+xml" href="/favicon2.svg" />
-  <title>Fire Mood</title>
 
   <link href='/style.css' rel='stylesheet'>
 
@@ -37,11 +58,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Fire Mood",
+    "url": "https://firemood.web.app/",
+    "description": "A relaxing web application featuring crackling fireplace sounds and visuals.",
+    "applicationCategory": "HealthApplication", 
+    "operatingSystem": "Web",
+    "author": {
+        "@type": "Organization",
+        "name": "Fire Mood"
+    },
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }
+  }
+  </script>
 </head>
 
 <body>
   <div id="video-background">
-    <video id="fire-video" loop playsinline autoplay muted>
+    <video id="fire-video" loop playsinline autoplay muted aria-label="Crackling fireplace video for relaxation and focus">
       <source src="fire.mp4" type="video/mp4">
     </video>
     
