@@ -84,9 +84,21 @@
 
 <body>
   <div id="video-background">
-    <video id="fire-video" loop playsinline autoplay muted aria-label="Crackling fireplace video for relaxation and focus">
+    <video id="fire-video" loop playsinline autoplay muted poster="fire-thumbnail.jpg" aria-label="Crackling fireplace video for relaxation and focus">
       <source src="fire.mp4" type="video/mp4">
     </video>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Crackling Fireplace Video",
+      "description": "A relaxing fireplace video used for focus and relaxation backgrounds.",
+      "thumbnailUrl": "https://firemood.pages.dev/fire-thumbnail.jpg",
+      "uploadDate": "2026-01-22",
+      "contentUrl": "https://firemood.pages.dev/fire.mp4"
+    }
+    </script>
     
   </div>
   <div id="player"></div>
