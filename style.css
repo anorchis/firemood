@@ -136,21 +136,21 @@ body.playing #content {
   color: rgba(255, 255, 255, 1);
 }
 
-/* 9. About 페이지 스타일 */
-html.about-page,
-body.about-page {
-  overflow-y: auto !important;
-  overflow-x: hidden;
-  height: auto;
-  min-height: 100%;
-}
-
-.about-page #overlay {
-  min-height: 100%;
-  height: auto;
+/* 9. About 오버레이 스타일 */
+.about-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
   padding: 60px 20px;
   box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.7);
 }
 
 .about-content {
@@ -206,7 +206,7 @@ body.about-page {
     font-size: 0.8rem;
   }
 
-  .about-page #overlay {
+  .about-overlay {
     padding: 40px 15px;
   }
 
