@@ -118,3 +118,103 @@ body.playing #overlay {
 body.playing #content {
   /* 재생 시 텍스트에 변화를 주고 싶다면 여기에 작성 (현재는 그대로 유지) */
 }
+
+/* 8. About 링크 스타일 */
+.about-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  z-index: 30;
+}
+
+.about-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* 9. About 페이지 스타일 */
+.about-page {
+  overflow-y: auto;
+}
+
+.about-page #overlay {
+  min-height: 100%;
+  height: auto;
+  padding: 60px 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.about-content {
+  max-width: 700px;
+  width: 100%;
+  text-align: left;
+}
+
+.about-content h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-content h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffcc80;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.about-content .highlight {
+  color: #ffcc80;
+  font-weight: 400;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 3rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: white;
+}
+
+/* 반응형 처리 */
+@media (max-width: 768px) {
+  .about-link {
+    top: 15px;
+    right: 15px;
+    font-size: 0.8rem;
+  }
+
+  .about-page #overlay {
+    padding: 40px 15px;
+  }
+
+  .about-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-content p {
+    font-size: 0.95rem;
+  }
+}
