@@ -136,21 +136,16 @@ body.playing #content {
   color: rgba(255, 255, 255, 1);
 }
 
-/* 9. About 오버레이 스타일 */
-.about-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 100;
+/* 9. About 페이지 스타일 */
+.about-page {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  overflow-y: auto;
   padding: 60px 20px;
   box-sizing: border-box;
+  position: relative;
+  z-index: 10;
 }
 
 .about-content {
@@ -206,7 +201,7 @@ body.playing #content {
     font-size: 0.8rem;
   }
 
-  .about-overlay {
+  .about-page {
     padding: 40px 15px;
   }
 

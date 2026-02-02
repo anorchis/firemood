@@ -6,23 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('overlay');
   const controls = document.getElementById('controls');
   const volumeBtn = document.getElementById('volume-btn');
-  const aboutLink = document.getElementById('about-link');
-  const aboutOverlay = document.getElementById('about-overlay');
-  const backLink = document.getElementById('back-link');
-
-  // About overlay toggle
-  aboutLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    aboutOverlay.style.display = 'flex';
-    document.body.classList.add('about-open');
-  });
-
-  backLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    aboutOverlay.style.display = 'none';
-    document.body.classList.remove('about-open');
-  });
-
   // Attempt to autoplay muted (browser policy usually requires mute for autoplay)
   video.muted = true;
   video.play().catch(error => {
