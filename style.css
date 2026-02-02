@@ -137,6 +137,11 @@ body.playing #content {
 }
 
 /* 9. About 페이지 스타일 */
+body.about-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .about-page {
   min-height: 100vh;
   display: flex;
